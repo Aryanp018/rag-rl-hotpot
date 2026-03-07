@@ -1,0 +1,9 @@
+artifacts/
+runs/
+__pycache__/
+*.pyc
+*.npy
+*.pt
+*.egg-info/
+.env
+.DS_Store
