@@ -1,0 +1,8 @@
+torch>=2.1.0
+transformers>=4.38.0
+datasets>=2.18.0
+sentence-transformers>=2.6.0
+numpy>=1.24.0
+pandas>=2.0.0
+matplotlib>=3.7.0
+accelerate>=0.27.0
