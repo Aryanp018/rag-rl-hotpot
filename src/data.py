@@ -218,7 +218,8 @@ def build_train_pack(
 
 # ── Full data setup (called by all training scripts) ─────────────────────────
 
-def setup_data(device: str, train_size: int = TRAIN_SIZE, val_size: int = VAL_SIZE):
+def setup_data(device: str, train_size: int = TRAIN_SIZE, val_size: int = VAL_SIZE,
+               dataset_name: str = "hotpotqa"):
     """
     One-stop function that returns everything needed for training/eval.
     Caches embeddings to disk.

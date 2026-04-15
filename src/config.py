@@ -12,8 +12,8 @@ CACHE_DIR = os.path.join(ARTIFACTS_DIR, "caches")
 EMB_DIR = os.path.join(ARTIFACTS_DIR, "embeddings")
 
 # ── Data ─────────────────────────────────────────────────────────────────────
-TRAIN_SIZE = 2000
-VAL_SIZE = 500
+TRAIN_SIZE = 10000
+VAL_SIZE   = 1000
 DATASET_NAME = "hotpot_qa"
 DATASET_CONFIG = "distractor"
 
@@ -22,9 +22,9 @@ EMB_MODEL = "all-MiniLM-L6-v2"
 TOP_K = 3
 
 # ── Generator ─────────────────────────────────────────────────────────────────
-GEN_MODEL = "google/flan-t5-xl"   # upgrade from base to xl for A6000
-MAX_NEW_TOKENS = 32
-MAX_INPUT_LENGTH = 512
+GEN_MODEL = "mistralai/Mistral-7B-Instruct-v0.3"
+MAX_NEW_TOKENS = 64
+MAX_INPUT_LENGTH = 2048
 
 # ── GRPO ──────────────────────────────────────────────────────────────────────
 GRPO_STEPS = 2000

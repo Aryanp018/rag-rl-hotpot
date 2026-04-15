@@ -7,7 +7,7 @@ import json
 import numpy as np
 import torch
 from typing import Dict, List, Optional, Callable
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+from transformers import AutoTokenizer, AutoModelForCausalLM
 
 from utils import (
     em_score, f1_score, title_recall, sentence_recall,
@@ -87,13 +87,15 @@ def evaluate(
             truncation=True, max_length=MAX_INPUT_LENGTH
         ).to(device)
 
+        input_len = inputs["input_ids"].shape[1]
         with torch.no_grad():
             out = model.generate(
                 **inputs,
                 max_new_tokens=max_new_tokens,
                 do_sample=False,
+                pad_token_id=tokenizer.eos_token_id,
             )
-        pred = tokenizer.decode(out[0], skip_special_tokens=True).strip()
+        pred = tokenizer.decode(out[0][input_len:], skip_special_tokens=True).strip()
         gold = gold_answers_val[ex_id]
         gm = gold_support_val[ex_id]
 

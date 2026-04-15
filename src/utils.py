@@ -134,9 +134,9 @@ def compute_reward(
 def build_prompt(question: str, chosen_rows: List[Dict]) -> str:
     ctx = "\n".join([f"[{r['title']}] {r['text']}" for r in chosen_rows])
     return (
-        f"Answer the question using the context.\n\n"
+        f"<s>[INST] Answer the question using only the provided context. Be concise.\n\n"
         f"Context:\n{ctx}\n\n"
-        f"Question: {question}\nAnswer:"
+        f"Question: {question} [/INST]"
     )
 
 
