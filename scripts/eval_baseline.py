@@ -5,7 +5,7 @@ Supports 4-GPU distributed inference via torchrun.
 Usage (single GPU):
     python eval_baseline.py
 
-Usage (all 4 GPUs):
+Usage
     torchrun --nproc_per_node=4 scripts/eval_baseline.py
 
 Usage (with reranker):

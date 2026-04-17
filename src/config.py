@@ -6,8 +6,8 @@ import os
 
 # ── Paths ────────────────────────────────────────────────────────────────────
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ARTIFACTS_DIR = os.path.join(PROJECT_ROOT, "artifacts")
-RUNS_DIR = os.path.join(PROJECT_ROOT, "runs")
+RUNS_DIR   = r"F:\rag_rl_runs"
+ARTIFACTS_DIR = r"F:\rag_rl_artifacts"
 CACHE_DIR = os.path.join(ARTIFACTS_DIR, "caches")
 EMB_DIR = os.path.join(ARTIFACTS_DIR, "embeddings")
 
@@ -32,7 +32,7 @@ GRPO_GROUP_SIZE = 8
 GRPO_LR = 5e-6
 GRPO_LOG_EVERY = 20
 GRPO_CKPT_EVERY = 200
-GRPO_TEMPERATURE = 0.7
+GRPO_TEMPERATURE = 1.2
 GRPO_TOP_P = 0.9
 
 # ── Reward ────────────────────────────────────────────────────────────────────
