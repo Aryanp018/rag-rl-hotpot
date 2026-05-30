@@ -33,10 +33,10 @@ from config import RUNS_DIR
 def parse_args():
     p = argparse.ArgumentParser()
     p.add_argument("--seeds", type=int, nargs="+", default=[42, 123, 456])
-    p.add_argument("--train_size", type=int, default=2000)
-    p.add_argument("--val_size", type=int, default=500)
+    p.add_argument("--train_size", type=int, default=10000)
+    p.add_argument("--val_size", type=int, default=1000)
     p.add_argument("--skip_baseline", action="store_true")
-    p.add_argument("--grpo_steps", type=int, default=2000)
+    p.add_argument("--grpo_steps", type=int, default=3000)
     p.add_argument("--reranker_steps", type=int, default=2000)
     p.add_argument("--dry_run", action="store_true",
                    help="Print commands without running them")

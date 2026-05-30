@@ -16,8 +16,7 @@ import datetime
 import uuid
 import numpy as np
 import torch
-import bitsandbytes as bnb
-from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
+from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch.distributed as dist
 from torch.nn.parallel import DistributedDataParallel as DDP
 
@@ -142,18 +141,14 @@ def main():
     if tok.pad_token is None:
         tok.pad_token = tok.eos_token
 
-    bnb_config = BitsAndBytesConfig(
-        load_in_4bit=True,
-        bnb_4bit_compute_dtype=torch.bfloat16,
-    )
     model = AutoModelForCausalLM.from_pretrained(
         src,
-        quantization_config=bnb_config,
-        device_map="auto"
-    )
+        torch_dtype=torch.bfloat16,
+    ).to(device)
 
-    # Wrap with DDP only for multi-GPU — keep raw_model for generate/save
     raw_model = model
+    if is_distributed:
+        model = DDP(raw_model, device_ids=[local_rank])
 
     model.train()
     opt = torch.optim.AdamW(raw_model.parameters(), lr=args.lr)

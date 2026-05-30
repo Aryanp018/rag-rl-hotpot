@@ -22,17 +22,17 @@ EMB_MODEL = "all-MiniLM-L6-v2"
 TOP_K = 3
 
 # ── Generator ─────────────────────────────────────────────────────────────────
-GEN_MODEL = "mistralai/Mistral-7B-Instruct-v0.3"
+GEN_MODEL = "Qwen/Qwen3-4B"
 MAX_NEW_TOKENS = 64
 MAX_INPUT_LENGTH = 2048
 
 # ── GRPO ──────────────────────────────────────────────────────────────────────
-GRPO_STEPS = 2000
-GRPO_GROUP_SIZE = 8
+GRPO_STEPS = 3000
+GRPO_GROUP_SIZE = 32
 GRPO_LR = 5e-6
 GRPO_LOG_EVERY = 20
-GRPO_CKPT_EVERY = 200
-GRPO_TEMPERATURE = 1.2
+GRPO_CKPT_EVERY = 3001
+GRPO_TEMPERATURE = 0.7
 GRPO_TOP_P = 0.9
 
 # ── Reward ────────────────────────────────────────────────────────────────────

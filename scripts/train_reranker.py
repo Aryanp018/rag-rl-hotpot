@@ -117,12 +117,14 @@ def main():
 
     # Evaluate retrieval quality
     from evaluate import evaluate
-    from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+    from transformers import AutoTokenizer, AutoModelForCausalLM
     from config import GEN_MODEL
 
     print("\nLoading baseline generator for retrieval eval...")
     tok = AutoTokenizer.from_pretrained(GEN_MODEL)
-    model = AutoModelForSeq2SeqLM.from_pretrained(GEN_MODEL).to(device)
+    if tok.pad_token is None:
+        tok.pad_token = tok.eos_token
+    model = AutoModelForCausalLM.from_pretrained(GEN_MODEL, torch_dtype=torch.bfloat16).to(device)
 
     metrics = evaluate(
         model=model,
